@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maploy - Video Editor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #888;
+            margin-bottom: 40px;
+        }
+
+        .hero p strong {
+            color: #fff;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 50px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: #2a2a2a;
+            border-color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        /* Showreel Button */
+        .showreel-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 50px;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-bottom: 80px;
+        }
+
+        .showreel-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Section Title */
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #fff;
+        }
+
+        .section-title span {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Video Grid */
+        .video-section {
+            margin-bottom: 80px;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .video-card {
+            background: #1a1a1a;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #2a2a2a;
+            transition: all 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            border-color: #667eea;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .video-thumbnail i {
+            font-size: 3rem;
+            color: #667eea;
+            opacity: 0.8;
+        }
+
+        .video-info {
+            padding: 20px;
+        }
+
+        .video-info h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .video-info p {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .video-stats {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 5px 12px;
+            background: #2a2a2a;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #667eea;
+        }
+
+        /* Vertical Videos */
+        .vertical-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+        }
+
+        .vertical-card {
+            background: #1a1a1a;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #2a2a2a;
+            transition: all 0.3s ease;
+        }
+
+        .vertical-card:hover {
+            transform: translateY(-5px);
+            border-color: #764ba2;
+        }
+
+        .vertical-thumbnail {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .vertical-thumbnail i {
+            font-size: 2.5rem;
+            color: #764ba2;
+        }
+
+        .vertical-info {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .vertical-info h4 {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Motion Design Section */
+        .motion-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .motion-card {
+            background: #1a1a1a;
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid #2a2a2a;
+            transition: all 0.3s ease;
+        }
+
+        .motion-card:hover {
+            border-color: #667eea;
+            transform: scale(1.02);
+        }
+
+        .motion-card i {
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .motion-card h4 {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 80px 0;
+            border-top: 1px solid #2a2a2a;
+        }
+
+        .cta-section h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .cta-section h2 span {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cta-section p {
+            color: #888;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        footer p {
+            color: #555;
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero,
+        .video-section,
+        .cta-section {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .social-links {
+                gap: 10px;
+            }
+
+            .social-link {
+                padding: 10px 18px;
+                font-size: 0.85rem;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+            }
+        }
+
+        /* Logo */
+        .logo-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .believer-logo {
+            width: 110px;
+            height: 110px;
+            object-fit: cover;
+            border-radius: 50%;
+            background: #fff;
+            padding: 15px;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.35);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        /* Hover animation */
+        .believer-logo:hover {
+            transform: translateY(-10px) scale(1.08) rotate(3deg);
+            box-shadow: 0 20px 60px rgba(118, 75, 162, 0.6);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="logo-wrapper">
+                <img src="./Снимок экрана 2025-12-15 174534.png" alt="Believer Logo" class="believer-logo">
+            </div>
+            <h1>hey, i'm <span>BELIEVER</span> !</h1>
+            <p>i don't just edit, i craft your <strong>dream videos</strong></p>
+
+            <div class="social-links">
+                <a href="https://t.me/believerrrrrrrrrr" class="social-link">
+                    <i class="fab fa-telegram"></i> telegram
+                </a>
+                <a href="https://x.com/maploy_yo" class="social-link">
+                    <i class="fab fa-telegram"></i> telegram licku
+                </a>
+                <a href="https://www.instagram.com/krr.ttss?igsh=MW9nc2ZrMWRmbmw1cQ%3D%3D&utm_source=qr"
+                    class="social-link">
+                    <i class="fab fa-instagram"></i> instagram
+                </a>
+
+            </div>
+
+            <a href="#" class="showreel-btn">
+                <i class="fas fa-play"></i> showreel
+            </a>
+        </section>
+
+        <!-- Long-Form Videos -->
+        <section class="video-section">
+            <h2 class="section-title">Videos i've <span>worked on</span></h2>
+            <h3 style="text-align: center; color: #888; margin-bottom: 30px; font-weight: 500;">Long-Form Videos</h3>
+
+
+
+
+  <section class="video-section">
+    <div class="video-grid">
+
+        <div class="video-card">
+            <video
+                src="video.mp4"
+                controls
+                preload="metadata"
+                style="
+                    width:100%;
+                    max-width:100%;
+                    border-radius:16px;
+                    background:#000;
+                ">
+            </video>
+
+            <div class="video-info">
+                <h3>экспертный формат</h3>
+                <p>BELIEVER</p>
+                <span class="video-stats">30000+ subscribes</span>
+            </div>
+        </div>
+
+           <div class="video-grid">
+
+        <div class="video-card">
+            <video
+                src="1111.mp4"
+                controls
+                preload="metadata"
+                style="
+                    width:100%;
+                    max-width:100%;
+                    border-radius:16px;
+                    background:#000;
+                ">
+            </video>
+
+            <div class="video-info">
+                <h3>экспертный формат</h3>
+                <p>BELIEVER</p>
+                <span class="video-stats">30000+ subscribes</span>
+            </div>
+        </div>
+
+    </div>
+
+       <div class="video-grid">
+
+        <div class="video-card">
+            <video
+                src="111.mp4"
+                controls
+                preload="metadata"
+                style="
+                    width:100%;
+                    max-width:100%;
+                    border-radius:16px;
+                    background:#000;
+                ">
+            </video>
+
+            <div class="video-info">
+                <h3>motion</h3>
+                <p>BELIEVER</p>
+                <span class="video-stats">30000+ subscribes</span>
+            </div>
+        </div>
+
+    </div>
+
+       <div class="video-grid">
+
+        <div class="video-card">
+            <video
+                src="11111.mp4"
+                controls
+                preload="metadata"
+                style="
+                    width:100%;
+                    max-width:100%;
+                    border-radius:16px;
+                    background:#000;
+                ">
+            </video>
+
+            <div class="video-info">
+                <h3>motion</h3>
+                <p>BELIEVER</p>
+                <span class="video-stats">30000+ subscribes</span>
+            </div>
+        </div>
+
+    </div>
+
+    </div>
+</section>
+
+
+
+
+            <!-- CTA Section -->
+            <section class="cta-section">
+                <h2>Let's make your content <span>VIRAL!</span></h2>
+                <p>send me a message, my dm's are open!</p>
+
+                <div class="social-links">
+                    <a href="https://t.me/believerrrrrrrrrr" class="social-link">
+                        <i class="fab fa-telegram"></i> telegram
+                    </a>
+                    <a href="https://x.com/maploy_yo" class="social-link">
+                        <i class="fab fa-telegram"></i> telegram licku
+                    </a>
+                    <a href="https://www.instagram.com/krr.ttss?igsh=MW9nc2ZrMWRmbmw1cQ%3D%3D&utm_source=qr"
+                        class="social-link">
+                        <i class="fab fa-instagram"></i> instagram
+                    </a>
+
+                </div>
+            </section>
+    </div>
+
+    <footer>
+        <p>© 2024 Maploy. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
